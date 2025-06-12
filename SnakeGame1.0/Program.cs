@@ -63,5 +63,69 @@ namespace SnakeGame1._0
             score = 0;
             direction = 0;
         }
+
+        static void Draw()
+        {
+            Console.Clear();
+
+            for (int i = 0; i < width + 1; i++)
+            {
+                Console.Write("#");
+            }
+            Console.WriteLine();
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (j == 0)
+                    {
+                        Console.Write("#");
+                    }
+
+                    else if (j == width -1)
+                    {
+                        Console.Write("#");
+                    }
+
+                    else if (j == snakeX && i == snakeY)
+                    {
+                        Console.Write("O");
+                    }
+
+                    else if (j == fruitX && i == snakeY)
+                    {
+                        Console.Write("f");
+                    }
+
+                    else
+                    {
+                        bool tailbit = false;
+
+                        for (int k = 0; k < taillenght; k++)
+                        {
+                            if (tailX[k] == j && tailY[k] == i)
+                            {
+                                tailbit = true;
+                                break;
+                            }
+                        }
+
+                        if (tailbit)
+                        {
+                            Console.Write("o");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+
+                    Console.WriteLine();
+                    Console.WriteLine("Score: {0}",score);
+
+                }
+            }
+        }
     }
 }
