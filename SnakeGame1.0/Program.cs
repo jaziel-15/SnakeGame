@@ -93,7 +93,7 @@ namespace SnakeGame1._0
                         Console.Write("O");
                     }
 
-                    else if (j == fruitX && i == snakeY)
+                    else if (j == fruitX && i == fruitY)
                     {
                         Console.Write("f");
                     }
@@ -121,11 +121,57 @@ namespace SnakeGame1._0
                         }
                     }
 
-                    Console.WriteLine();
-                    Console.WriteLine("Score: {0}",score);
+                  
 
                 }
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Score: {0}", score);
         }
+
+        static void HandleKeypress(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.W:
+                case ConsoleKey.UpArrow:
+                    if (direction != 2)
+                    {
+                        direction = 0;
+                    }
+                    break;
+
+                case ConsoleKey.D:
+                case ConsoleKey.RightArrow:
+                    if (direction != 3)
+                    {
+                        direction = 1;
+                    }
+                    break;
+
+                case ConsoleKey.S:
+                case ConsoleKey.DownArrow:
+                    if (direction != 0)
+                    {
+                        direction = 2;
+                    }
+                    break;
+
+                case ConsoleKey.A:
+                case ConsoleKey.LeftArrow:
+                    if (direction != 1)
+                    {
+                        direction = 3;
+                    }
+                    break;
+                case ConsoleKey.Escape:
+                    gameOver = true;
+                    break;
+            }
+        }
+
     }
+
+
 }
