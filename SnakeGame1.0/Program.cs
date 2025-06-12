@@ -51,5 +51,17 @@ namespace SnakeGame1._0
             Console.WriteLine("Game over! tu puntuaje es de:" + score + ".");
             Console.WriteLine("");
         }
+
+        static void InitializeGame()
+        {
+            snakeX = width / 2;
+            snakeY = height / 2;
+
+            fruitX = random.Next(1, width - 1);
+            fruitY = random.Next(1, height - 1);
+
+            score = 0;
+            direction = 0;
+        }
     }
 }
