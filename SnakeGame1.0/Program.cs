@@ -5,7 +5,7 @@ namespace SnakeGame1._0
 {
     internal class Program
     {
-        static int weight = 20;
+        static int width = 20;
         static int height = 20;
         static int score = 0;
         static bool gameOver = false;
@@ -23,7 +23,33 @@ namespace SnakeGame1._0
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Title = "SnakeGame 1.0";
+            Console.CursorVisible = false;
+
+            InitializeGame();
+
+            while (!gameOver)
+            {
+                if (Console.KeyAvailable)
+                {
+                    HandleKeypress(Console.ReadKey(true).Key);
+                }
+
+                MoveSnake();
+
+                if (CheckCollision())
+                {
+                    gameOver = true;
+                }
+
+                Draw();
+
+                Thread.Sleep(1000/speed);
+            }
+
+            Console.SetCursorPosition(width / 2 - 5, height / 2);
+            Console.WriteLine("Game over! tu puntuaje es de:" + score + ".");
+            Console.WriteLine("");
         }
     }
 }
