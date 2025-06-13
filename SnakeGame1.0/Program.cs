@@ -171,6 +171,59 @@ namespace SnakeGame1._0
             }
         }
 
+        static void MoveSnake()
+        {
+            int prevX = tailX[0];
+            int prevY = tailY[0];
+            int prev2X, prev2Y;
+
+            tailX[0] = snakeX;
+            tailY[0] = snakeY;
+
+            for (int i = 1; i < taillenght; i++)
+            {
+                prev2X = tailX[i];
+                prev2Y = tailY[i];
+                tailX[i] = prevX;
+                tailY[i] = prevY;
+                prevX = prev2X;
+                prevY = prev2Y;
+            }
+
+            switch (direction)
+            {
+                case 0:
+                    snakeY--;
+                    break;
+
+                case 1:
+                    snakeX++;
+                    break;
+
+                case 2: 
+                    snakeY++;
+                    break;
+
+                case 3:
+                    snakeX--;
+                    break;
+
+            }
+
+            if (snakeX == 0 || snakeX == width -1 || snakeY == 0 || snakeY == height)
+            {
+                gameOver = true;
+            }
+
+            if (snakeX == fruitX && snakeY == fruitY)
+            {
+                score += 10;
+                taillenght++;
+                fruitX = random.Next(1, width - 1);
+                fruitY = random.Next(1,height - 1);
+            } 
+        }
+
     }
 
 
