@@ -121,9 +121,13 @@ namespace SnakeGame1._0
                         }
                     }
 
-                  
-
                 }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < width + 2; i++)
+            {
+                Console.Write("#");
             }
 
             Console.WriteLine();
@@ -210,7 +214,7 @@ namespace SnakeGame1._0
 
             }
 
-            if (snakeX == 0 || snakeX == width -1 || snakeY == 0 || snakeY == height)
+            if (snakeX == 0 || snakeX == width -1 || snakeY == 0 || snakeY == height - 1)
             {
                 gameOver = true;
             }
@@ -222,6 +226,18 @@ namespace SnakeGame1._0
                 fruitX = random.Next(1, width - 1);
                 fruitY = random.Next(1,height - 1);
             } 
+        }
+
+        static bool CheckCollision()
+        {
+            for (int i = 0; i < taillenght; i++)
+            {
+                if (tailX[i] == snakeX && tailY[i] == snakeY)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
